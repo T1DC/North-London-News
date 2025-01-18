@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Your Free Website</title>
+  <title>North London News</title>
   <style>
-    /* Basic Styles for Your Website */
+    /* General Styles */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -16,7 +16,7 @@
     }
 
     header {
-      background-color: #4CAF50;
+      background-color: #333;
       color: white;
       padding: 20px;
       text-align: center;
@@ -26,9 +26,48 @@
       margin: 0;
     }
 
+    nav {
+      background-color: #4CAF50;
+      overflow: hidden;
+    }
+
+    nav a {
+      float: left;
+      display: block;
+      color: white;
+      padding: 14px 20px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    nav a:hover {
+      background-color: #45a049;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background-color: #333;
+    }
+
+    .tab {
+      padding: 15px;
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      width: 120px;
+      background-color: #555;
+    }
+
+    .tab:hover {
+      background-color: #777;
+    }
+
     section {
       padding: 20px;
       text-align: center;
+      display: none;
     }
 
     footer {
@@ -40,26 +79,113 @@
       width: 100%;
       bottom: 0;
     }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      nav a {
+        float: none;
+        width: 100%;
+        text-align: left;
+      }
+
+      .tabs {
+        flex-direction: column;
+      }
+
+      .tab {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Header Section -->
   <header>
-    <h1>Welcome to Your Free Website!</h1>
-    <p>This website is hosted for free with HTTPS using GitHub Pages.</p>
+    <h1>North London News</h1>
+    <p>Your source for news from North London's boroughs and beyond</p>
   </header>
 
-  <section>
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="javascript:void(0)" onclick="showContent('boroughs')">Boroughs</a>
+    <a href="javascript:void(0)" onclick="showContent('topics')">Topics</a>
+    <a href="javascript:void(0)" onclick="showContent('getinvolved')">Get Involved</a>
+    <a href="javascript:void(0)" onclick="showContent('about')">About</a>
+  </nav>
+
+  <!-- Tab Navigation for Content Sections -->
+  <div class="tabs">
+    <div class="tab" onclick="showContent('boroughs')">Boroughs</div>
+    <div class="tab" onclick="showContent('topics')">Topics</div>
+    <div class="tab" onclick="showContent('getinvolved')">Get Involved</div>
+    <div class="tab" onclick="showContent('about')">About</div>
+  </div>
+
+  <!-- Content Sections -->
+  <section id="boroughs" class="content">
+    <h2>North London Boroughs</h2>
+    <p>Select a borough to read more about:</p>
+    <ul>
+      <li>Barnet</li>
+      <li>Brent</li>
+      <li>Ealing</li>
+      <li>Hackney</li>
+      <li>Haringey</li>
+      <li>Islington</li>
+      <li>Enfield</li>
+      <li>Camden</li>
+    </ul>
+  </section>
+
+  <section id="topics" class="content">
+    <h2>Educational Topics</h2>
+    <p>Explore our educational content across a variety of topics:</p>
+    <ul>
+      <li>Mathematics</li>
+      <li>Archaeology</li>
+      <li>Zoology</li>
+      <li>History</li>
+      <li>Literature</li>
+      <li>Physics</li>
+      <li>Chemistry</li>
+    </ul>
+  </section>
+
+  <section id="getinvolved" class="content">
+    <h2>Get Involved</h2>
+    <p>Learn how you can contribute to North London News:</p>
+    <ul>
+      <li>Submit an article</li>
+      <li>Join our team</li>
+      <li>Attend local events</li>
+      <li>Volunteer with our charity partners</li>
+    </ul>
+  </section>
+
+  <section id="about" class="content">
     <h2>About Us</h2>
-    <p>We provide free hosting with automatic SSL for secure connections.</p>
+    <p>North London News is a community-driven news website, focusing on local issues, educational topics, and borough updates. We aim to keep our readers informed and engaged in the local community.</p>
   </section>
 
   <footer>
-    <p>&copy; 2025 Your Website Name. All Rights Reserved.</p>
+    <p>&copy; 2025 North London News. All Rights Reserved.</p>
   </footer>
 
   <script>
-    // Simple JavaScript for interactivity (optional)
-    console.log("Welcome to your free website hosted via GitHub Pages!");
+    // JavaScript function to show and hide content based on tab clicks
+    function showContent(tab) {
+      // Hide all sections first
+      const sections = document.querySelectorAll('.content');
+      sections.forEach(section => {
+        section.style.display = 'none';
+      });
+
+      // Show the selected section
+      const selectedSection = document.getElementById(tab);
+      if (selectedSection) {
+        selectedSection.style.display = 'block';
+      }
+    }
   </script>
 </body>
 </html>
